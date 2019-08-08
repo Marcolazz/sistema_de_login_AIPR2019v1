@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-        <title>Sistema de Login TNX Systems</title>
+        <title>Sistema de Login Furyess Systems</title>
         <style>
             #caixaCadastro,
             #caixaRecuperarSenha,
@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" value=":: Entrar ::"
+                        <input type="submit" value=" Entrar "
                         name="btnEntrar" id="btnEntrar"
                         class="btn btn-primary btn-block">
                     </div>
@@ -127,7 +127,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" value=":: Cadastrar ::"
+                        <input type="submit" value=" Cadastrar "
                         class="btn btn-primary btn-block"
                         id="btnRegistrar">
                     </div>
@@ -165,7 +165,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" value=":: Enviar e-mail ::"
+                        <input type="submit" value=" Enviar e-mail "
                         id="btnEnviarEmail" class="btn btn-primary btn-block">
                     </div>
 
