@@ -163,30 +163,54 @@
 
             //Preparação dos dados para envio para o back-end
             //Envio dos dados do formulário de login
-            $('#btnEntrar').click(function(e){
+            $('#btnEntrar').click(function(e) {
                 let formLogin = document.querySelector("#formLogin")
-                if(formLogin.checkValidity()){
-                    e.preventDefault();//Não recarregar a página
+                if (formLogin.checkValidity()) {
+                    e.preventDefault(); //Não recarregar a página
                     $.ajax({
                         url: 'recebe.php',
                         method: 'post',
-                        data: $('#formLogin').serialize()+'&action=login',
-                        success: function(resposta){
+                        data: $('#formLogin').serialize() + '&action=login',
+                        success: function(resposta) {
                             $('#alerta').show();
-                            $('#resultado').html("Resposta:"+resposta+"Alo Ha!");
+                            $('#resultado').html("Resposta:" + resposta + "Alo Ha!");
                         }
                     });
                 }
             });
-            
+
             //Formulário de Cadastro de Usuário
-            $('btnRegistrar').click(function(e){
-
+            $('#btnRegistrar').click(function(e) {
+                let formCadastro = document.querySelector("#formCadastro")
+                if (formCadastro.checkValidity()) {
+                    e.preventDefault(); //Não recarregar a página
+                    $.ajax({
+                        url: 'recebe.php',
+                        method: 'post',
+                        data: $('#formCadastro').serialize() + '&action=cadastro',
+                        success: function(resposta) {
+                            $('#alerta').show();
+                            $('#resultado').html("Resposta:" + resposta);
+                        }
+                    });
+                }
             });
-            
-            //Formulário para mudar senha
-            $('btnEnviarEmail').click(function(e){
 
+            //Formulário para mudar senha
+            $('#btnEnviarEmail').click(function(e) {
+                let formSenha = document.querySelector("#formSenha")
+                if (formSenha.checkValidity()) {
+                    e.preventDefault(); //Não recarregar a página
+                    $.ajax({
+                        url: 'recebe.php',
+                        method: 'post',
+                        data: $('#formSenha').serialize() + '&action=recuperarSenha',
+                        success: function(resposta) {
+                            $('#alerta').show();
+                            $('#resultado').html("Resposta:" + resposta);
+                        }
+                    });
+                }
             });
 
 
