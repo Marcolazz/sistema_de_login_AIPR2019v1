@@ -1,6 +1,8 @@
 <?php
+
 //Inicializando a sessão
 session_start();
+
 //É necessário fazer a conexão com o Banco de Dados
 require_once "configDB.php";
 function verificar_entrada($entrada)
@@ -10,22 +12,28 @@ function verificar_entrada($entrada)
     $saida = htmlspecialchars($saida);
     return $saida;
 }
+
 if (isset($_POST['action']) && $_POST['action'] == 'login') {
     //Verificação e Login do usuário
     $nomeUsuario = verificar_entrada($_POST['nomeUsuario']);
     $senhaUsuario = verificar_entrada($_POST['senhaUsuario']);
     $senha = sha1($senhaUsuario);
+
     //Para teste
     //echo "<br>Usuário: $nomeUsuario <br> senha: $senha";
     $sql = $conecta->prepare("SELECT * FROM usuario WHERE nomeUsuario = ? AND senha = ?");
     $sql->bind_param("ss", $nomeUsuario, $senha);
     $sql->execute();
     $busca = $sql->fetch();
+
     if ($busca != null) { //! = è diferente
+        //Colocando o nome do usuário na sessão
+        $_SESSION['nomeUsuario'] = $nomeUsuario;
         echo "ok";
     } else {
         echo "Usuário e senha não conferem!";
     }
+
 } else if (isset($_POST['action']) && $_POST['action'] == 'cadastrar') {
     //Cadastro de um novo usuário
     //Pegar os campos do formulário
@@ -37,9 +45,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
     $senhaConfirma = verificar_entrada($_POST['senhaConfirma']);
     $concordar = $_POST['concordar'];
     $dataCriacao = date("Y-m-d H:i:s");
+
     //hash de senha / codificação de senha em 40 carácteres
     $senha = sha1($senhaUsuario);
     $senhaC = sha1($senhaConfirma);
+
     if ($senha != $senhaC) {
         echo "<h1>As senhas não conferem</h1>";
         exit();
@@ -47,11 +57,14 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
         //echo "<h5>senha codificada: $senha</h5>";
         //Verificar se o usuário ja existe no banco de dados
         $sql = $conecta->prepare("SELECT nomeUsuario, email FROM usuario WHERE nomeUsuario = ? OR  email = ?");
+
         //Substitui cada ? por uma string abaixo
         $sql->bind_param("ss", $nomeUsuario, $emailUsuario);
         $sql->execute();
+
         $resultado = $sql->get_result();
         $linha = $resultado->fetch_array(MYSQLI_ASSOC);
+
         if ($linha['nomeUsuario'] == $nomeUsuario) {
             echo "<p>Nome de usuário indisponível, tente outro</p>";
         } elseif ($linha['email'] == $emailUsuario) {

@@ -1,3 +1,7 @@
+<?php
+//Protegendo profile.php só para usuários logados
+require_once 'session.php';
+?>
 <!doctype html>
 <html lang="pt-br">
 
@@ -9,12 +13,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Perfil de Usuário</title>
+    <title>Perfil de <?= $usuario ?></title>
 </head>
 
 <body class="bg-dark">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">AxADK systems</a>
+        <a class="navbar-brand" href="#">Furyess systems</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,19 +28,19 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">Link 1</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="#">Link 2</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown link
+                        <?= $usuario ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Configurações</a>
+                        <a class="dropdown-item" href="sair.php">Sair</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
                     </div>
                 </li>
             </ul>
@@ -44,6 +48,9 @@
     </nav>
     <main class="container mt-4">
         <h1 class="text-light">Perfil de Usuário</h1>
+        <h2 class="text-light">Nome: <?= $nome ?></h2>
+        <h2 class="text-light">E-mail <?= $email ?></h2>
+        <h2 class="text-light">Data de Cadastro: <?= $dataCriacao ?></h2>
     </main>
 
     <!-- Optional JavaScript -->
