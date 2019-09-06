@@ -1,8 +1,8 @@
 <?php
-    session_start();
-    if(isset($_SESSION['nomeUsuario']))
+session_start();
+if (isset($_SESSION['nomeUsuario']))
     //Bloqueando usuários logados
-        header("location: profile.php");
+    header("location: profile.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
-    <title>Sistema de Login AXADK Systems</title>
+    <title>Sistema de Login Furyess Systems</title>
     <style>
         #caixaCadastro,
         #caixaRecuperarSenha,
@@ -86,6 +86,9 @@
                     </div>
                     <div class="form-group">
                         <input type="password" name="senhaConfirma" id="senhaConfirma" class="form-control" placeholder="Confirme a sua senha" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="imgUrl" id="imgUrl" class="form-control" placeholder="Url da imagem para Avatar" required>
                     </div>
                     <div class="form-group mt-5">
                         <div class="custom-control custom-checkbox">
